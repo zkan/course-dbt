@@ -4,15 +4,39 @@ models:
   - name: stg_tutorial_superheroes
     description: Demographics about each superhero such as name, hair color, height and weight.
     columns:
+      - name: id
+        description: Id of the superhero in the database
       - name: name
+        description: Name of the superhero
         tests:
           - not_null
+      - name: gender
+        description: Gender of the superhero
+      - name: eye_color
+        description: Eyecolor of the superhero
+      - name: race
+        description: Race of the superhero
+      - name: hair_color
+        description: Hair color of the superhero
       - name: height
+        description: Height of the superhero
         tests:
           - positive_values
+      - name: publisher
+        description: Publisher / comic brand that created the superhero
+      - name: skin_color
+        description: Skin color of the superhero
+      - name: alignment
+        description: Alignment of the superhero
       - name: weight_lbs
+        description: Weight of the superhero (lbs)
         tests:
           - positive_values
       - name: weight_kg
+        description: Weight of the superhero (kgs)
         tests:
           - positive_values
+      - name: created_at
+        description: Timestamp when this record was created
+      - name: updated_at
+        description: Timestamp of last update
