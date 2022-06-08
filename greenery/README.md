@@ -3,7 +3,7 @@
 > How many users do we have?
 
 ```sql
-SELECT COUNT(1) FROM dbt_kan_o.stg_users
+select count(distinct user_id) FROM dbt_kan_o.stg_users
 ```
 
 We have 130 users.
@@ -11,19 +11,19 @@ We have 130 users.
 > On average, how many orders do we receive per hour?
 
 ```sql
-WITH order_counts_in_each_hour AS (
+with order_counts_in_each_hour as (
 
-  SELECT
-    DATE_TRUNC('hour', created_at_utc),
-    COUNT(order_id) AS order_count
-  FROM
+  select
+    date_trunc('hour', created_at_utc)
+    , count(order_id) AS order_count
+  from
     dbt_kan_o.stg_orders
-  GROUP BY
-    DATE_TRUNC('hour', created_at_utc)
-
+  group by
+    date_trunc('hour', created_at_utc)
+  
 )
 
-SELECT AVG(order_count) FROM order_counts_in_each_hour
+select avg(order_count) from order_counts_in_each_hour
 ```
 
 We receive 7.52 orders per hour.
@@ -31,19 +31,19 @@ We receive 7.52 orders per hour.
 > On average, how long does an order take from being placed to being delivered?
 
 ```sql
-WITH date_diff_for_each_order AS (
+with date_diff_for_each_order as (
 
-  SELECT
-    order_id,
-    delivered_at_utc - created_at_utc AS date_diff
-  FROM
+  select
+    order_id
+    , delivered_at_utc - created_at_utc AS date_diff
+  from
     dbt_kan_o.stg_orders
-  WHERE
+  where
     status = 'delivered'
 
 )
 
-SELECT AVG(date_diff) FROM date_diff_for_each_order
+select avg(date_diff) from date_diff_for_each_order
 ```
 
 It takes almost 4 days from being placed to being delivered.
@@ -51,27 +51,27 @@ It takes almost 4 days from being placed to being delivered.
 > How many users have only made one purchase? Two purchases? Three+ purchases?
 
 ```sql
-WITH users_with_order_count AS (
+with users_with_order_count as (
 
-  SELECT
-    user_id,
-    COUNT(order_id) AS order_count
-  FROM
+  select
+    user_id
+    , count(order_id) AS order_count
+  from
     dbt_kan_o.stg_orders
-  GROUP BY
+  group by
     user_id
 
 )
 
-SELECT 'who_made_one_purchase' AS user_group, COUNT(1) FROM users_with_order_count WHERE order_count = 1
+select 'who_made_one_purchase' as user_group, count(1) from users_with_order_count where order_count = 1
 
-UNION
+union
 
-SELECT 'who_made_two_purchases'  AS user_group, COUNT(1) FROM users_with_order_count WHERE order_count = 2
+select 'who_made_two_purchases'  as user_group, count(1) from users_with_order_count where order_count = 2
 
-UNION
+union
 
-SELECT 'who_made_three+_purchases'  AS user_group, COUNT(1) FROM users_with_order_count WHERE order_count >= 3
+select 'who_made_three+_purchases' as user_group, count(1) from users_with_order_count where order_count >= 3
 ```
 
 We have:
@@ -83,19 +83,19 @@ We have:
 > On average, how many unique sessions do we have per hour?
 
 ```sql
-WITH unique_sessions_in_each_hour AS (
+with unique_sessions_in_each_hour as (
 
-  SELECT
-    DATE_TRUNC('hour', created_at_utc),
-    COUNT(DISTINCT session_id) AS distinct_session_count
-  FROM
+  select
+    date_trunc('hour', created_at_utc),
+    count(distinct session_id) as distinct_session_count
+  from
     dbt_kan_o.stg_events
-  GROUP BY
-    DATE_TRUNC('hour', created_at_utc)
+  group by
+    date_trunc('hour', created_at_utc)
 
 )
 
-SELECT AVG(distinct_session_count) FROM unique_sessions_in_each_hour
+select avg(distinct_session_count) from unique_sessions_in_each_hour
 ```
 
 We have aroud 16.33 unique sessions per hour.
