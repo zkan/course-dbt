@@ -20,7 +20,7 @@ WITH order_counts_in_each_hour AS (
     dbt_kan_o.stg_orders
   GROUP BY
     DATE_TRUNC('hour', created_at)
-  
+
 )
 
 SELECT AVG(order_count) FROM order_counts_in_each_hour
