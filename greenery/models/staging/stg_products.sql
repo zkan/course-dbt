@@ -1,12 +1,12 @@
 {{
   config(
-    materialized='table'
+    materialized = 'view'
   )
 }}
 
-SELECT
-    product_id,
-    name,
-    price,
-    inventory
-FROM {{ source('greenery', 'products') }}
+select
+    product_id
+    , name
+    , price
+    , inventory
+from {{ source('greenery', 'products') }}

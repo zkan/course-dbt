@@ -1,11 +1,11 @@
 {{
   config(
-    materialized='table'
+    materialized = 'table'
   )
 }}
 
-SELECT
-    promo_id,
-    discount,
-    status
-FROM {{ source('greenery', 'promos') }}
+select
+    promo_id
+    , discount
+    , status
+from {{ source('greenery', 'promos') }}

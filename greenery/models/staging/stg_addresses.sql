@@ -1,13 +1,13 @@
 {{
   config(
-    materialized='table'
+    materialized = 'view'
   )
 }}
 
-SELECT
-    address_id,
-    address,
-    zipcode,
-    state,
-    country
-FROM {{ source('greenery', 'addresses') }}
+select
+    address_id
+    , address
+    , zipcode
+    , state
+    , country
+from {{ source('greenery', 'addresses') }}

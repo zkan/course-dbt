@@ -1,11 +1,11 @@
 {{
   config(
-    materialized='table'
+    materialized = 'view'
   )
 }}
 
-SELECT
-    order_id,
-    product_id,
-    quantity
-FROM {{ source('greenery', 'order_items') }}
+select
+    order_id
+    , product_id
+    , quantity
+from {{ source('greenery', 'order_items') }}
