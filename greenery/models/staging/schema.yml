@@ -36,3 +36,13 @@ models:
         description: Timestamp the user was last updated
       - name: address_id
         description: Default delivery address for the user
+
+  - name: std_promos
+    description: Promos
+    columns:
+      - name: promo_id
+        description: Each unique promocode on platform
+      - name: discount
+        description: Absolute dollar amount that is given off with the code
+      - name: status
+        description: Is the promo code active or disabled
