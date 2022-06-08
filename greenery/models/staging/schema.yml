@@ -17,7 +17,7 @@ models:
       - name: country
         description: Country this delivery address is based in
 
-  - name: std_users
+  - name: stg_users
     description: Users
     columns:
       - name: user_id
@@ -37,7 +37,7 @@ models:
       - name: address_id
         description: Default delivery address for the user
 
-  - name: std_promos
+  - name: stg_promos
     description: Promos
     columns:
       - name: promo_id
@@ -47,7 +47,19 @@ models:
       - name: status
         description: Is the promo code active or disabled
 
-  - name: std_orders
+  - name: stg_products
+    description: Products
+    columns:
+      - name: product_id
+        description: UUID for each unique product on platform
+      - name: name
+        description: Name of the product
+      - name: price
+        description: Price of the product
+      - name: inventory
+        description: Amount of the inventory we have for this product
+
+  - name: stg_orders
     description: Orders
     columns:
       - name: order_id
