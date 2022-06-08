@@ -14,12 +14,12 @@ We have 130 users.
 WITH order_counts_in_each_hour AS (
 
   SELECT
-    date_trunc('hour', created_at),
+    DATE_TRUNC('hour', created_at),
     COUNT(order_id) AS order_count
   FROM
     dbt_kan_o.stg_orders
   GROUP BY
-    date_trunc('hour', created_at)
+    DATE_TRUNC('hour', created_at)
   
 )
 
@@ -81,3 +81,21 @@ We have:
 * 25 users who made three+ purchases
 
 > On average, how many unique sessions do we have per hour?
+
+```sql
+WITH unique_sessions_in_each_hour AS (
+
+  SELECT
+    DATE_TRUNC('hour', created_at),
+    COUNT(DISTINCT session_id) AS distinct_session_count
+  FROM
+    dbt_kan_o.stg_events
+  GROUP BY
+    DATE_TRUNC('hour', created_at)
+
+)
+
+SELECT AVG(distinct_session_count) FROM unique_sessions_in_each_hour
+```
+
+We have aroud 16.33 unique sessions per hour.
