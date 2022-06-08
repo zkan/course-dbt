@@ -16,3 +16,23 @@ models:
         description: State this delivery address is based in
       - name: country
         description: Country this delivery address is based in
+
+  - name: std_users
+    description: Users
+    columns:
+      - name: user_id
+        description: UUID for each unique user on platform
+      - name: first_name
+        description: First name of the user
+      - name: last_name
+        description: Last name of the user
+      - name: email
+        description: Email address of the user
+      - name: phone_number
+        description: Phone number of the user
+      - name: created_at
+        description: Timestamp the user was created
+      - name: updated_at
+        description: Timestamp the user was last updated
+      - name: address_id
+        description: Default delivery address for the user
