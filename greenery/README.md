@@ -2,6 +2,12 @@
 
 > How many users do we have?
 
+```sql
+SELECT COUNT(1) FROM dbt_kan_o.stg_users
+```
+
+We have 130 users.
+
 
 > On average, how many orders do we receive per hour?
 
