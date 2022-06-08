@@ -14,12 +14,12 @@ We have 130 users.
 WITH order_counts_in_each_hour AS (
 
   SELECT
-    DATE_TRUNC('hour', created_at),
+    DATE_TRUNC('hour', created_at_utc),
     COUNT(order_id) AS order_count
   FROM
     dbt_kan_o.stg_orders
   GROUP BY
-    DATE_TRUNC('hour', created_at)
+    DATE_TRUNC('hour', created_at_utc)
 
 )
 
@@ -35,7 +35,7 @@ WITH date_diff_for_each_order AS (
 
   SELECT
     order_id,
-    delivered_at - created_at AS date_diff
+    delivered_at_utc - created_at_utc AS date_diff
   FROM
     dbt_kan_o.stg_orders
   WHERE
@@ -86,12 +86,12 @@ We have:
 WITH unique_sessions_in_each_hour AS (
 
   SELECT
-    DATE_TRUNC('hour', created_at),
+    DATE_TRUNC('hour', created_at_utc),
     COUNT(DISTINCT session_id) AS distinct_session_count
   FROM
     dbt_kan_o.stg_events
   GROUP BY
-    DATE_TRUNC('hour', created_at)
+    DATE_TRUNC('hour', created_at_utc)
 
 )
 
