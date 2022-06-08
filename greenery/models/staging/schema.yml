@@ -88,3 +88,13 @@ models:
         description: Actual timestamp of delivery
       - name: status
         description: Status of the order
+
+  - name: stg_order_items
+    description: Order Items
+    columns:
+      - name: order_id
+        description: Order ID of this order
+      - name: product_id
+        description: Product ID of a single item in this order
+      - name: quantity
+        description: Number of units of the product in this order
