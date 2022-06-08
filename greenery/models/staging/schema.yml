@@ -46,3 +46,33 @@ models:
         description: Absolute dollar amount that is given off with the code
       - name: status
         description: Is the promo code active or disabled
+
+  - name: std_orders
+    description: Orders
+    columns:
+      - name: order_id
+        description: UUID for each unique order on platform
+      - name: user_id
+        description: UserId of the user that placed this order
+      - name: promo_id
+        description: PromoId if any was used in the order
+      - name: address_id
+        description: Delivery address for this order
+      - name: created_at
+        description: Timestamp when the order was created
+      - name: order_cost
+        description: Dollar about of the items in the order
+      - name: shipping_cost
+        description: Cost of shipping for the order
+      - name: order_total
+        description: Total cost of the order including shipping
+      - name: tracking_id
+        description: Tracking number for the order/package
+      - name: shipping_service
+        description: Company that was used for shipping
+      - name: estimated_delivery_at
+        description: Estimated date of delivery
+      - name: delivered_at
+        description: Actual timestamp of delivery
+      - name: status
+        description: Status of the order
