@@ -101,6 +101,9 @@ models:
         description: Actual timestamp of delivery
       - name: status
         description: Status of the order
+        tests:
+          - accepted_values:
+              values: ['preparing', 'shipped', 'delivered']
 
   - name: stg_order_items
     description: Staging Order Items
