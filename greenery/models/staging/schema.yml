@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_addresses
-    description: Addresses
+    description: Staging Addresses
     columns:
       - name: address_id
         description: UUID for each unique address on platform
@@ -19,7 +19,7 @@ models:
         description: Country this delivery address is based in
 
   - name: stg_users
-    description: Users
+    description: Staging Users
     columns:
       - name: user_id
         description: UUID for each unique user on platform
@@ -42,7 +42,7 @@ models:
         description: Default delivery address for the user
 
   - name: stg_promos
-    description: Promos
+    description: Staging Promos
     columns:
       - name: promo_id
         description: Each unique promocode on platform
@@ -55,7 +55,7 @@ models:
         description: Is the promo code active or disabled
 
   - name: stg_products
-    description: Products
+    description: Staging Products
     columns:
       - name: product_id
         description: UUID for each unique product on platform
@@ -70,7 +70,7 @@ models:
         description: Amount of the inventory we have for this product
 
   - name: stg_orders
-    description: Orders
+    description: Staging Orders
     columns:
       - name: order_id
         description: UUID for each unique order on platform
@@ -103,7 +103,7 @@ models:
         description: Status of the order
 
   - name: stg_order_items
-    description: Order Items
+    description: Staging Order Items
     columns:
       - name: order_id
         description: Order ID of this order
@@ -117,7 +117,7 @@ models:
         description: Number of units of the product in this order
 
   - name: stg_events
-    description: Events
+    description: Staging Events
     columns:
       - name: event_id
         description: UUID of each unique event on the platform

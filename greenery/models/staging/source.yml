@@ -7,9 +7,22 @@ sources:
     database: dbt
     tables:
       - name: addresses
+        description: Addresses
+
       - name: users
+        description: Users
+
       - name: promos
+        description: Promos
+
       - name: products
+        description: Products
+
       - name: orders
+        description: Orders
+
       - name: order_items
+        description: Order Items
+
       - name: events
+        description: Events
