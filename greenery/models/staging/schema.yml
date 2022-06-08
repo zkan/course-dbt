@@ -98,3 +98,23 @@ models:
         description: Product ID of a single item in this order
       - name: quantity
         description: Number of units of the product in this order
+
+  - name: stg_events
+    description: Events
+    columns:
+      - name: event_id
+        description: UUID of each unique event on the platform
+      - name: session_id
+        description: UUID of each browsing session on the platform which can contain many events
+      - name: user_id
+        description: UUID of the user that this event is associated with
+      - name: page_url
+        description: URL that the event happened on
+      - name: created_at
+        description: Timestamp of the event
+      - name: event_type
+        description: Type of event
+      - name: order_id
+        description: If the event is specific to an order (mostly used for checkout)
+      - name: product_id
+        description: If the event is specific to a product
