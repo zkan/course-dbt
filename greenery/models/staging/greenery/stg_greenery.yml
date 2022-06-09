@@ -1,6 +1,7 @@
 version: 2
 
 models:
+
   - name: stg_greenery__addresses
     description: Staging addresses
     columns:
