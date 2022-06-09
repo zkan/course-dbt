@@ -3,7 +3,7 @@
 > How many users do we have?
 
 ```sql
-select count(distinct user_id) FROM dbt_kan_o.stg_users
+select count(distinct user_id) from dbt_kan_o.stg_users
 ```
 
 We have 130 users.
@@ -13,14 +13,13 @@ We have 130 users.
 ```sql
 with order_counts_in_each_hour as (
 
-  select
-    date_trunc('hour', created_at_utc)
-    , count(order_id) AS order_count
-  from
-    dbt_kan_o.stg_orders
-  group by
-    date_trunc('hour', created_at_utc)
-  
+    select
+        date_trunc('hour', created_at_utc),
+        count(order_id) AS order_count
+
+    from dbt_kan_o.stg_orders
+    group by date_trunc('hour', created_at_utc)
+
 )
 
 select avg(order_count) from order_counts_in_each_hour
@@ -33,13 +32,12 @@ We receive 7.52 orders per hour.
 ```sql
 with date_diff_for_each_order as (
 
-  select
-    order_id
-    , delivered_at_utc - created_at_utc AS date_diff
-  from
-    dbt_kan_o.stg_orders
-  where
-    status = 'delivered'
+    select
+        order_id,
+        delivered_at_utc - created_at_utc as date_diff
+
+    from dbt_kan_o.stg_orders
+    where status = 'delivered'
 
 )
 
@@ -53,24 +51,19 @@ It takes almost 4 days from being placed to being delivered.
 ```sql
 with users_with_order_count as (
 
-  select
-    user_id
-    , count(order_id) AS order_count
-  from
-    dbt_kan_o.stg_orders
-  group by
-    user_id
+    select
+        user_id,
+        count(order_id) as order_count
+
+    from dbt_kan_o.stg_orders
+    group by user_id
 
 )
 
 select 'who_made_one_purchase' as user_group, count(1) from users_with_order_count where order_count = 1
-
-union
-
+union all
 select 'who_made_two_purchases'  as user_group, count(1) from users_with_order_count where order_count = 2
-
-union
-
+union all
 select 'who_made_three+_purchases' as user_group, count(1) from users_with_order_count where order_count >= 3
 ```
 
@@ -85,13 +78,12 @@ We have:
 ```sql
 with unique_sessions_in_each_hour as (
 
-  select
-    date_trunc('hour', created_at_utc),
-    count(distinct session_id) as distinct_session_count
-  from
-    dbt_kan_o.stg_events
-  group by
-    date_trunc('hour', created_at_utc)
+    select
+        date_trunc('hour', created_at_utc),
+        count(distinct session_id) as distinct_session_count
+
+    from dbt_kan_o.stg_events
+    group by date_trunc('hour', created_at_utc)
 
 )
 
