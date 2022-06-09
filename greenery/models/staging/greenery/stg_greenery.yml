@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_addresses
+  - name: stg_greenery__addresses
     description: Staging Addresses
     columns:
       - name: address_id
@@ -18,7 +18,7 @@ models:
       - name: country
         description: Country this delivery address is based in
 
-  - name: stg_users
+  - name: stg_greenery__users
     description: Staging Users
     columns:
       - name: user_id
@@ -34,14 +34,14 @@ models:
         description: Email address of the user
       - name: phone_number
         description: Phone number of the user
-      - name: created_at_utc
+      - name: created_at
         description: Timestamp the user was created (in UTC)
-      - name: updated_at_utc
+      - name: updated_at
         description: Timestamp the user was last updated (in UTC)
       - name: address_id
         description: Default delivery address for the user
 
-  - name: stg_promos
+  - name: stg_greenery__promos
     description: Staging Promos
     columns:
       - name: promo_id
@@ -54,7 +54,7 @@ models:
       - name: status
         description: Is the promo code active or disabled
 
-  - name: stg_products
+  - name: stg_greenery__products
     description: Staging Products
     columns:
       - name: product_id
@@ -69,7 +69,7 @@ models:
       - name: inventory
         description: Amount of the inventory we have for this product
 
-  - name: stg_orders
+  - name: stg_greenery__orders
     description: Staging Orders
     columns:
       - name: order_id
@@ -83,7 +83,7 @@ models:
         description: PromoId if any was used in the order
       - name: address_id
         description: Delivery address for this order
-      - name: created_at_utc
+      - name: created_at
         description: Timestamp when the order was created (in UTC)
       - name: order_cost
         description: Dollar about of the items in the order
@@ -95,9 +95,9 @@ models:
         description: Tracking number for the order/package
       - name: shipping_service
         description: Company that was used for shipping
-      - name: estimated_delivery_at_utc
+      - name: estimated_delivery_at
         description: Estimated date of delivery (in UTC)
-      - name: delivered_at_utc
+      - name: delivered_at
         description: Actual timestamp of delivery (in UTC)
       - name: status
         description: Status of the order
@@ -105,7 +105,7 @@ models:
           - accepted_values:
               values: ['preparing', 'shipped', 'delivered']
 
-  - name: stg_order_items
+  - name: stg_greenery__order_items
     description: Staging Order Items
     columns:
       - name: order_id
@@ -119,7 +119,7 @@ models:
       - name: quantity
         description: Number of units of the product in this order
 
-  - name: stg_events
+  - name: stg_greenery__events
     description: Staging Events
     columns:
       - name: event_id
@@ -133,7 +133,7 @@ models:
         description: UUID of the user that this event is associated with
       - name: page_url
         description: URL that the event happened on
-      - name: created_at_utc
+      - name: created_at
         description: Timestamp of the event (in UTC)
       - name: event_type
         description: Type of event
