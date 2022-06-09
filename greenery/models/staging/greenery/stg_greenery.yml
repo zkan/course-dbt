@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_greenery__addresses
-    description: Staging Addresses
+    description: Staging addresses
     columns:
       - name: address_id
         description: UUID for each unique address on platform
@@ -19,7 +19,7 @@ models:
         description: Country this delivery address is based in
 
   - name: stg_greenery__users
-    description: Staging Users
+    description: Staging users
     columns:
       - name: user_id
         description: UUID for each unique user on platform
@@ -42,7 +42,7 @@ models:
         description: Default delivery address for the user
 
   - name: stg_greenery__promos
-    description: Staging Promos
+    description: Staging promos
     columns:
       - name: promo_id
         description: Each unique promocode on platform
@@ -55,7 +55,7 @@ models:
         description: Is the promo code active or disabled
 
   - name: stg_greenery__products
-    description: Staging Products
+    description: Staging products
     columns:
       - name: product_id
         description: UUID for each unique product on platform
@@ -70,7 +70,7 @@ models:
         description: Amount of the inventory we have for this product
 
   - name: stg_greenery__orders
-    description: Staging Orders
+    description: Staging orders
     columns:
       - name: order_id
         description: UUID for each unique order on platform
@@ -106,7 +106,7 @@ models:
               values: ['preparing', 'shipped', 'delivered']
 
   - name: stg_greenery__order_items
-    description: Staging Order Items
+    description: Staging order items
     columns:
       - name: order_id
         description: Order ID of this order
@@ -120,7 +120,7 @@ models:
         description: Number of units of the product in this order
 
   - name: stg_greenery__events
-    description: Staging Events
+    description: Staging events
     columns:
       - name: event_id
         description: UUID of each unique event on the platform

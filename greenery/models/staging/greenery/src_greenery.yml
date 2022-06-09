@@ -1,28 +1,27 @@
 version: 2
 
 sources:
-
   - name: greenery
     schema: public
     database: dbt
     tables:
       - name: addresses
-        description: Addresses
+        description: Addresses of users on Greenery platform
 
       - name: users
-        description: Users
+        description: Users on Greenery platform
 
       - name: promos
-        description: Promos
+        description: Promo codes used on Greenery platform
 
       - name: products
-        description: Products
+        description: Products on Greenery platform
 
       - name: orders
-        description: Orders
+        description: Orders users created on Greenery platform
 
       - name: order_items
-        description: Order Items
+        description: Order Items users created on Greenery platform
 
       - name: events
-        description: Events
+        description: Events happened on Greenery platform
