@@ -3,7 +3,7 @@
 > How many users do we have?
 
 ```sql
-select count(distinct user_id) from dbt_kan_o.stg_users
+select count(distinct user_id) from dbt_kan_o.stg_greenery__users
 ```
 
 We have 130 users.
@@ -14,11 +14,11 @@ We have 130 users.
 with order_counts_in_each_hour as (
 
     select
-        date_trunc('hour', created_at_utc),
+        date_trunc('hour', created_at),
         count(order_id) AS order_count
 
-    from dbt_kan_o.stg_orders
-    group by date_trunc('hour', created_at_utc)
+    from dbt_kan_o.stg_greenery__orders
+    group by date_trunc('hour', created_at)
 
 )
 
@@ -34,9 +34,9 @@ with date_diff_for_each_order as (
 
     select
         order_id,
-        delivered_at_utc - created_at_utc as date_diff
+        delivered_at - created_at as date_diff
 
-    from dbt_kan_o.stg_orders
+    from dbt_kan_o.stg_greenery__orders
     where status = 'delivered'
 
 )
@@ -44,7 +44,7 @@ with date_diff_for_each_order as (
 select avg(date_diff) from date_diff_for_each_order
 ```
 
-It takes almost 4 days from being placed to being delivered.
+It takes almost 4 days (3 days 21:24:11.803279) from being placed to being delivered.
 
 > How many users have only made one purchase? Two purchases? Three+ purchases?
 
@@ -55,7 +55,7 @@ with users_with_order_count as (
         user_id,
         count(order_id) as order_count
 
-    from dbt_kan_o.stg_orders
+    from dbt_kan_o.stg_greenery__orders
     group by user_id
 
 )
@@ -79,11 +79,11 @@ We have:
 with unique_sessions_in_each_hour as (
 
     select
-        date_trunc('hour', created_at_utc),
+        date_trunc('hour', created_at),
         count(distinct session_id) as distinct_session_count
 
-    from dbt_kan_o.stg_events
-    group by date_trunc('hour', created_at_utc)
+    from dbt_kan_o.stg_greenery__events
+    group by date_trunc('hour', created_at)
 
 )
 

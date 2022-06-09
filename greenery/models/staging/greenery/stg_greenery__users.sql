@@ -4,7 +4,15 @@
   )
 }}
 
-select
+with source as (
+
+  select * from {{ source('greenery', 'users') }}
+
+),
+
+renamed as (
+
+  select
     user_id,
     first_name,
     last_name,
@@ -14,4 +22,8 @@ select
     updated_at,
     address_id
 
-from {{ source('greenery', 'users') }}
+  from source
+
+)
+
+select * from renamed

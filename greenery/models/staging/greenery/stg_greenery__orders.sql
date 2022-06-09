@@ -4,7 +4,15 @@
   )
 }}
 
-select
+with source as (
+
+  select * from {{ source('greenery', 'orders') }}
+
+),
+
+renamed as (
+
+  select
     order_id,
     user_id,
     promo_id,
@@ -19,4 +27,8 @@ select
     delivered_at,
     status
 
-from {{ source('greenery', 'orders') }}
+  from source
+
+)
+
+select * from renamed

@@ -4,7 +4,15 @@
   )
 }}
 
-select
+with source as (
+
+  select * from {{ source('greenery', 'events') }}
+
+),
+
+renamed as (
+
+  select
     event_id,
     session_id,
     user_id,
@@ -14,4 +22,8 @@ select
     order_id,
     product_id
 
-from {{ source('greenery', 'events') }}
+  from source
+
+)
+
+select * from renamed

@@ -4,10 +4,22 @@
   )
 }}
 
-select
+with source as (
+
+  select * from {{ source('greenery', 'products') }}
+
+),
+
+renamed as (
+
+  select
     product_id,
     name,
     price,
     inventory
 
-from {{ source('greenery', 'products') }}
+  from source
+
+)
+
+select * from renamed
