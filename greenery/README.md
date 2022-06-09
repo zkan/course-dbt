@@ -76,9 +76,9 @@ select 'who_made_three+_purchases' as user_group, count(1) from users_with_order
 
 We have:
 
-* 71 users who made one purchase
+* 25 users who made one purchase
 * 28 users who made two purchases
-* 25 users who made three+ purchases
+* 71 users who made three+ purchases
 
 > On average, how many unique sessions do we have per hour?
 
