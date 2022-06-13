@@ -3,7 +3,7 @@
 > How many users do we have?
 
 ```sql
-select count(distinct user_id) from dbt_kan_o.stg_greenery__users
+select count(distinct user_id) from "dbt"."dbt_kan_o"."stg_greenery__users"
 ```
 
 We have 130 users.
@@ -14,11 +14,11 @@ We have 130 users.
 with order_counts_in_each_hour as (
 
     select
-        date_trunc('hour', created_at),
+        date_trunc('hour', created_at_utc),
         count(order_id) AS order_count
 
-    from dbt_kan_o.stg_greenery__orders
-    group by date_trunc('hour', created_at)
+    from "dbt"."dbt_kan_o"."stg_greenery__orders"
+    group by date_trunc('hour', created_at_utc)
 
 )
 
@@ -34,9 +34,9 @@ with date_diff_for_each_order as (
 
     select
         order_id,
-        delivered_at - created_at as date_diff
+        delivered_at_utc - created_at_utc as date_diff
 
-    from dbt_kan_o.stg_greenery__orders
+    from "dbt"."dbt_kan_o"."stg_greenery__orders"
     where status = 'delivered'
 
 )
@@ -55,7 +55,7 @@ with users_with_order_count as (
         user_id,
         count(order_id) as order_count
 
-    from dbt_kan_o.stg_greenery__orders
+    from "dbt"."dbt_kan_o"."stg_greenery__orders"
     group by user_id
 
 )
@@ -79,11 +79,11 @@ We have:
 with unique_sessions_in_each_hour as (
 
     select
-        date_trunc('hour', created_at),
+        date_trunc('hour', created_at_utc),
         count(distinct session_id) as distinct_session_count
 
-    from dbt_kan_o.stg_greenery__events
-    group by date_trunc('hour', created_at)
+    from "dbt"."dbt_kan_o"."stg_greenery__events"
+    group by date_trunc('hour', created_at_utc)
 
 )
 
