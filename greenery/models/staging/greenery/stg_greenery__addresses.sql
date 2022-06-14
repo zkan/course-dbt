@@ -10,10 +10,10 @@ with source as (
 
 ),
 
-renamed as (
+recasted as (
 
   select
-    address_id,
+    address_id as address_guid,
     address,
     zipcode,
     state,
@@ -23,4 +23,4 @@ renamed as (
 
 )
 
-select * from renamed
+select * from recasted

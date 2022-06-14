@@ -10,15 +10,15 @@ with source as (
 
 ),
 
-renamed as (
+recasted as (
 
   select
-    promo_id,
+    replace(replace(lower(promo_id), '-', '_'), ' ', '_') as promo_guid,
     discount,
-    status
+    status as promo_status
 
   from source
 
 )
 
-select * from renamed
+select * from recasted

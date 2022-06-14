@@ -10,16 +10,16 @@ with source as (
 
 ),
 
-renamed as (
+recasted as (
 
   select
-    product_id,
+    product_id as product_guid,
     name,
-    price,
+    price as price_usd,
     inventory
 
   from source
 
 )
 
-select * from renamed
+select * from recasted

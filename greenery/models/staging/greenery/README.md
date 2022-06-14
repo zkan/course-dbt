@@ -3,7 +3,7 @@
 > How many users do we have?
 
 ```sql
-select count(distinct user_id) from "dbt"."dbt_kan_o"."stg_greenery__users"
+select count(distinct user_guid) from "dbt"."dbt_kan_o"."stg_greenery__users"
 ```
 
 We have 130 users.
@@ -15,7 +15,7 @@ with order_counts_in_each_hour as (
 
     select
         date_trunc('hour', created_at_utc),
-        count(order_id) AS order_count
+        count(order_guid) AS order_count
 
     from "dbt"."dbt_kan_o"."stg_greenery__orders"
     group by date_trunc('hour', created_at_utc)
@@ -33,11 +33,11 @@ We receive 7.52 orders per hour.
 with date_diff_for_each_order as (
 
     select
-        order_id,
+        order_guid,
         delivered_at_utc - created_at_utc as date_diff
 
     from "dbt"."dbt_kan_o"."stg_greenery__orders"
-    where status = 'delivered'
+    where order_status = 'delivered'
 
 )
 
@@ -52,11 +52,11 @@ It takes almost 4 days (3 days 21:24:11.803279) from being placed to being deliv
 with users_with_order_count as (
 
     select
-        user_id,
-        count(order_id) as order_count
+        user_guid,
+        count(order_guid) as order_count
 
     from "dbt"."dbt_kan_o"."stg_greenery__orders"
-    group by user_id
+    group by user_guid
 
 )
 
@@ -80,7 +80,7 @@ with unique_sessions_in_each_hour as (
 
     select
         date_trunc('hour', created_at_utc),
-        count(distinct session_id) as distinct_session_count
+        count(distinct session_guid) as distinct_session_count
 
     from "dbt"."dbt_kan_o"."stg_greenery__events"
     group by date_trunc('hour', created_at_utc)

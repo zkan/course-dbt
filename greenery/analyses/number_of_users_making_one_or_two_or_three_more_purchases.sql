@@ -1,11 +1,11 @@
 with users_with_order_count as (
 
     select
-        user_id,
-        count(order_id) as order_count
+        user_guid,
+        count(order_guid) as order_count
 
     from {{ ref('stg_greenery__orders') }}
-    group by user_id
+    group by user_guid
 
 )
 
