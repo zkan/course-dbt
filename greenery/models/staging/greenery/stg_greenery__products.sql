@@ -6,19 +6,19 @@
 
 with source as (
 
-  select * from {{ source('greenery', 'products') }}
+    select * from {{ source('greenery', 'products') }}
 
 ),
 
 recasted as (
 
-  select
-    product_id as product_guid,
-    name,
-    price as price_usd,
-    inventory
+    select
+        product_id as product_guid,
+        name,
+        price as price_usd,
+        inventory
 
-  from source
+    from source
 
 )
 

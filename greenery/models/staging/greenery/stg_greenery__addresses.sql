@@ -6,20 +6,20 @@
 
 with source as (
 
-  select * from {{ source('greenery', 'addresses') }}
+    select * from {{ source('greenery', 'addresses') }}
 
 ),
 
 recasted as (
 
-  select
-    address_id as address_guid,
-    address,
-    zipcode,
-    state,
-    country
+    select
+        address_id as address_guid,
+        address,
+        zipcode,
+        state,
+        country
 
-  from source
+    from source
 
 )
 
