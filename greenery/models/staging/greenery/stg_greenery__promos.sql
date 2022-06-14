@@ -14,7 +14,7 @@ recasted as (
 
   select
     replace(replace(lower(promo_id), '-', '_'), ' ', '_') as promo_guid,
-    discount,
+    discount as discount_usd,
     status as promo_status
 
   from source
