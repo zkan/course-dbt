@@ -15,7 +15,7 @@ recasted as (
     select
         order_id as order_guid,
         user_id as user_guid,
-        promo_id as promo_guid,
+        replace(replace(lower(promo_id), '-', '_'), ' ', '_') as promo_guid,
         address_id as address_guid,
         created_at as created_at_utc,
         order_cost as order_cost_usd,
