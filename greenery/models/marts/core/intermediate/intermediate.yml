@@ -2,7 +2,7 @@ version: 2
 
 models:
 
-  - name: user_orders__joined
+  - name: int_user_orders__joined
     description: Users, orders, and some others joined together
     columns:
       - name: user_guid

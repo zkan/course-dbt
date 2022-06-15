@@ -30,7 +30,7 @@ final as (
         delivered_at_utc,
         order_status
 
-    from {{ ref('user_orders__joined') }}
+    from {{ ref('int_user_orders__joined') }}
 
 )
 
