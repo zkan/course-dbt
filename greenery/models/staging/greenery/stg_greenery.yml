@@ -68,6 +68,9 @@ models:
         description: Tracking number for the order/package
       - name: shipping_service
         description: Company that was used for shipping
+        tests:
+          - accepted_values:
+              values: ['fedex', 'dhl', 'ups', 'usps']
       - name: estimated_delivery_at_utc
         description: Estimated date of delivery (in UTC)
       - name: delivered_at_utc
@@ -119,6 +122,9 @@ models:
         description: Absolute dollar amount that is given off with the code
       - name: promo_status
         description: Is the promo code active or disabled
+        tests:
+          - accepted_values:
+              values: ['active', 'inactive']
 
   - name: stg_greenery__users
     description: Staging users
@@ -142,3 +148,7 @@ models:
         description: Timestamp the user was last updated (in UTC)
       - name: address_guid
         description: Default delivery address for the user
+        tests:
+          - relationships:
+              to: ref('stg_greenery__addresses')
+              field: address_guid
