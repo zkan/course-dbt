@@ -65,6 +65,7 @@ These models are common and could be reused by any business unit.
 * Order quantity should be only positive
 * Shipping service should be one of the accepted values (fedex, dhl, ups, or usps) and can be NULL
 * Event type should be one of the accepted values (add_to_cart, checkout, page_view, or package_shipped)
+* Relationships between models should be associated correctly.
 
 > Did you find any “bad” data as you added and ran tests on your models? How did you go about either cleaning the data in the dbt model or adjusting your assumptions/tests?
 

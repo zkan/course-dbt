@@ -31,6 +31,10 @@ models:
         description: UUID of each browsing session on the platform which can contain many events
       - name: user_guid
         description: UUID of the user that this event is associated with
+        tests:
+          - relationships:
+              to: ref('stg_greenery__users')
+              field: user_guid
       - name: page_url
         description: URL that the event happened on
       - name: created_at_utc
@@ -42,8 +46,16 @@ models:
               values: ['add_to_cart', 'checkout', 'page_view', 'package_shipped']
       - name: order_guid
         description: If the event is specific to an order (mostly used for checkout)
+        tests:
+          - relationships:
+              to: ref('stg_greenery__orders')
+              field: order_guid
       - name: product_guid
         description: If the event is specific to a product
+        tests:
+          - relationships:
+              to: ref('stg_greenery__products')
+              field: product_guid
 
   - name: stg_greenery__orders
     description: Staging orders
@@ -55,10 +67,22 @@ models:
           - unique
       - name: user_guid
         description: UserId of the user that placed this order
+        tests:
+          - relationships:
+              to: ref('stg_greenery__users')
+              field: user_guid
       - name: promo_guid
         description: PromoId if any was used in the order
+        tests:
+          - relationships:
+              to: ref('stg_greenery__promos')
+              field: promo_guid
       - name: address_guid
         description: Delivery address for this order
+        tests:
+          - relationships:
+              to: ref('stg_greenery__addresses')
+              field: address_guid
       - name: created_at_utc
         description: Timestamp when the order was created (in UTC)
       - name: order_cost_usd
@@ -91,10 +115,16 @@ models:
         description: Order ID of this order
         tests:
           - not_null
+          - relationships:
+              to: ref('stg_greenery__orders')
+              field: order_guid
       - name: product_guid
         description: Product ID of a single item in this order
         tests:
           - not_null
+          - relationships:
+              to: ref('stg_greenery__products')
+              field: product_guid
       - name: quantity
         description: Number of units of the product in this order
 
