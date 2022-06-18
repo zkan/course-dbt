@@ -127,6 +127,8 @@ models:
               field: product_guid
       - name: quantity
         description: Number of units of the product in this order
+        tests:
+          - positive_values
 
   - name: stg_greenery__products
     description: Staging products
@@ -142,6 +144,8 @@ models:
         description: Price of the product (in USD)
       - name: inventory
         description: Amount of the inventory we have for this product
+        tests:
+          - positive_values
 
   - name: stg_greenery__promos
     description: Staging promos
