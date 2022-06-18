@@ -1,4 +1,4 @@
-# Greenery
+# Week 1
 
 > How many users do we have?
 
