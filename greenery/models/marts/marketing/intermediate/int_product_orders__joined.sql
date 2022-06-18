@@ -52,6 +52,7 @@ final as (
 
     select
         o.order_guid,
+        user_guid,
         product_name,
         promo_guid,
         order_cost_usd,

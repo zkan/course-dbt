@@ -2,6 +2,36 @@ version: 2
 
 models:
 
+  - name: int_product_orders__joined
+    description: Products and orders joined together
+    columns:
+      - name: order_guid
+        description: UUID for each unique order on platform
+      - name: product_name
+        description: Name of the product
+      - name: promo_guid
+        description: Each unique promocode on platform
+      - name: order_cost_usd
+        description: Dollar about of the items in the order (in USD)
+      - name: shipping_cost_usd
+        description: Cost of shipping for the order (in USD)
+      - name: order_total_usd
+        description: Total cost of the order including shipping (in USD)
+      - name: quantity
+        description: Number of units of the product in this order
+      - name: inventory
+        description: Amount of the inventory we have for this product
+      - name: shipping_service
+        description: Company that was used for shipping
+      - name: order_created_at_utc
+        description: Timestamp when the order was created (in UTC)
+      - name: estimated_delivery_at_utc
+        description: Estimated date of delivery (in UTC)
+      - name: delivered_at_utc
+        description: Actual timestamp of delivery (in UTC)
+      - name: order_status
+        description: Status of the order
+
   - name: int_user_orders__joined
     description: Users, orders, and some others joined together
     columns:
@@ -35,6 +65,10 @@ models:
         description: Cost of shipping for the order (in USD)
       - name: order_total_usd
         description: Total cost of the order including shipping (in USD)
+      - name: quantity
+        description: Number of units of the product in this order
+      - name: inventory
+        description: Amount of the inventory we have for this product
       - name: shipping_service
         description: Company that was used for shipping
       - name: order_created_at_utc

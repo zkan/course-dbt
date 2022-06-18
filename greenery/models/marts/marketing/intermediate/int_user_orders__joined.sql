@@ -6,23 +6,25 @@
 
 with
 
-orders as (
+product_orders as (
 
     select
         order_guid,
-        promo_guid,
         user_guid,
-        address_guid,
+        product_name,
+        promo_guid,
         order_cost_usd,
         shipping_cost_usd,
         order_total_usd,
+        quantity,
+        inventory,
         shipping_service,
-        created_at_utc as order_created_at_utc,
+        order_created_at_utc,
         estimated_delivery_at_utc,
         delivered_at_utc,
         order_status
     
-    from {{ ref('stg_greenery__orders') }}
+    from {{ ref('int_product_orders__joined') }}
 
 ),
 
@@ -53,30 +55,10 @@ addresses as (
 
 ),
 
-order_items as (
-
-    select
-        order_guid,
-        product_guid
-    
-    from {{ ref('stg_greenery__order_items') }}
-
-),
-
-products as (
-
-    select
-        product_guid,
-        name as product_name
-
-    from {{ ref('stg_greenery__products') }}
-
-),
-
 final as (
 
     select
-        o.user_guid,
+        u.user_guid,
         first_name,
         last_name,
         email,
@@ -85,31 +67,27 @@ final as (
         zipcode,
         state,
         country,
-        o.order_guid,
+        po.order_guid,
         product_name,
         promo_guid,
         order_cost_usd,
         shipping_cost_usd,
         order_total_usd,
+        quantity,
+        inventory,
         shipping_service,
         order_created_at_utc,
         estimated_delivery_at_utc,
         delivered_at_utc,
         order_status
 
-    from orders as o
+    from product_orders as po
     left join users as u
     on
-        o.user_guid = u.user_guid
+        po.user_guid = u.user_guid
     left join addresses as a
     on
-        o.address_guid = a.address_guid
-    left join order_items as oi
-    on
-        o.order_guid = oi.order_guid
-    left join products as p
-    on
-        oi.product_guid = p.product_guid
+        u.address_guid = a.address_guid
 
 )
 
