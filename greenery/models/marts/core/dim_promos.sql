@@ -4,9 +4,17 @@
   )
 }}
 
-select
-    promo_guid,
-    discount_usd,
-    promo_status
+with
 
-from {{ ref('stg_greenery__promos') }}
+promos as (
+
+    select
+        promo_guid,
+        discount_usd,
+        promo_status
+
+    from {{ ref('stg_greenery__promos') }}
+
+)
+
+select * from promos
