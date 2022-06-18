@@ -4,14 +4,22 @@
   )
 }}
 
-select
-    event_guid,
-    session_guid,
-    user_guid,
-    page_url,
-    created_at_utc,
-    event_type,
-    order_guid,
-    product_guid
+with
 
-from {{ ref('stg_greenery__events') }}
+events as (
+
+    select
+        event_guid,
+        session_guid,
+        user_guid,
+        page_url,
+        created_at_utc,
+        event_type,
+        order_guid,
+        product_guid
+
+    from {{ ref('stg_greenery__events') }}
+
+)
+
+select * from events
