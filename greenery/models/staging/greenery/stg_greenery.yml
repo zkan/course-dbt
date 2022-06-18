@@ -177,6 +177,8 @@ models:
         description: Last name of the user
       - name: email
         description: Email address of the user
+        tests:
+          - valid_email_format
       - name: phone_number
         description: Phone number of the user
       - name: created_at_utc
