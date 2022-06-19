@@ -23,7 +23,7 @@ users_bucket as (
         (user_orders = 1)::int has_one_purchase,
         (user_orders >= 2)::int has_two_purchases,
         (user_orders >= 3)::int has_three_plus_purchases
-    
+
     from orders_cohort
 
 )
@@ -74,7 +74,7 @@ These models are common and could be reused by any business unit.
 ### Marketing
 
 * `int_user_orders__joined`
-  
+
   This is an intermediate model in which we join necessary models together.
 
 * `fct_user_orders`
@@ -97,7 +97,9 @@ These models are common and could be reused by any business unit.
 * Order quantity should be only positive
 * Shipping service should be one of the accepted values (fedex, dhl, ups, or usps) and can be NULL
 * Event type should be one of the accepted values (add_to_cart, checkout, page_view, or package_shipped)
-* Relationships between models should be associated correctly.
+* Relationships between models should be associated correctly
+* Order quantity or prices are positive values
+* Order dates should be BEFORE arrival dates
 
 > Did you find any “bad” data as you added and ran tests on your models? How did you go about either cleaning the data in the dbt model or adjusting your assumptions/tests?
 
