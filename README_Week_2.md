@@ -75,19 +75,19 @@ These models are common and could be reused by any business unit.
 
 ### Marketing
 
-**Some ideas from Jacob:** For marketing mart we might want to dig into users — when was their first order? Last order? How many orders have they made? Total spend? We might want to dig into our biggest customers and look at trends. As a simple but important model, we can connect user and order data to make querying data about a user easier for stakeholders.
-
 * `int_user_orders__joined`
 
   This is an intermediate model in which we join necessary models together.
 
 * `fct_user_orders`
 
+**Some ideas from Jacob:** For marketing mart we might want to dig into users — when was their first order? Last order? How many orders have they made? Total spend? We might want to dig into our biggest customers and look at trends. As a simple but important model, we can connect user and order data to make querying data about a user easier for stakeholders.
+
 ### Product
 
-**Some ideas from Jacob:** For products mart, we might we want to know how different products perform. What are daily page views by product? Daily orders by product? What’s getting a lot of traffic, but maybe not converting into purchases?
-
 * `fct_page_views`
+
+**Some ideas from Jacob:** For products mart, we might we want to know how different products perform. What are daily page views by product? Daily orders by product? What’s getting a lot of traffic, but maybe not converting into purchases?
 
 > What assumptions are you making about each model? (i.e. why are you adding each test?)
 
