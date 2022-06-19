@@ -38,6 +38,8 @@ The repeat rate is 0.7983870967741935.
 
 > What are good indicators of a user who will likely purchase again? What about indicators of users who are likely NOT to purchase again? If you had more data, what features would you want to look into to answer this question?
 
+The following indicators could be used to find a user who will likely purchase again and NOT purchase again.
+
 * How fast delivery is
 * Estimated delivery date is close to the actual delivery date
 * Number of orders in a purchase
@@ -73,7 +75,7 @@ These models are common and could be reused by any business unit.
 
 ### Marketing
 
-For marketing mart we might want to dig into users — when was their first order? Last order? How many orders have they made? Total spend? We might want to dig into our biggest customers and look at trends. As a simple but important model, we can connect user and order data to make querying data about a user easier for stakeholders.
+**Some ideas from Jacob:** For marketing mart we might want to dig into users — when was their first order? Last order? How many orders have they made? Total spend? We might want to dig into our biggest customers and look at trends. As a simple but important model, we can connect user and order data to make querying data about a user easier for stakeholders.
 
 * `int_user_orders__joined`
 
@@ -81,10 +83,9 @@ For marketing mart we might want to dig into users — when was their first orde
 
 * `fct_user_orders`
 
-
 ### Product
 
-For products mart, we might we want to know how different products perform. What are daily page views by product? Daily orders by product? What’s getting a lot of traffic, but maybe not converting into purchases?
+**Some ideas from Jacob:** For products mart, we might we want to know how different products perform. What are daily page views by product? Daily orders by product? What’s getting a lot of traffic, but maybe not converting into purchases?
 
 * `fct_page_views`
 
@@ -104,7 +105,7 @@ For products mart, we might we want to know how different products perform. What
 * Event type should be one of the accepted values (add_to_cart, checkout, page_view, or package_shipped)
 * Relationships between models should be associated correctly
 * Order quantity or prices are positive values
-* Order dates should be BEFORE arrival dates
+* Order dates should be before delivery dates
 
 > Did you find any “bad” data as you added and ran tests on your models? How did you go about either cleaning the data in the dbt model or adjusting your assumptions/tests?
 
