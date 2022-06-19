@@ -56,6 +56,8 @@ If we have more data, I want to add the following features:
 
 > Explain the marts models you added. Why did you organize the models in the way you did?
 
+![Lineage Graph](./img/dbt-lineage-week-2.png)
+
 We've organized the mart models into 3 groups:
 
 * Core
