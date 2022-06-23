@@ -1,0 +1,21 @@
+version: 2
+
+models:
+
+  - name: int_session_events__agg
+    description: Session event aggregated to count the number of events in each type
+    columns:
+      - name: session_guid
+        description: UUID of each browsing session on the platform which can contain many events
+      - name: user_guid
+        description: UUID of the user that this event is associated with
+      - name: created_at_utc
+        description: Timestamp of the event (in UTC)
+      - name: add_to_cart
+        description: Number of add to cart event
+      - name: checkout
+        description: Number of checkout event
+      - name: page_view
+        description: Number of page view event
+      - name: package_shipped
+        description: Number of package shipped event
