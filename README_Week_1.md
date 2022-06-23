@@ -53,18 +53,23 @@ with users_with_order_count as (
 
     select
         user_guid,
-        count(order_guid) as order_count
+        case
+            when count(order_guid) = 1 then 'one_purchase'
+            when count(order_guid) = 2 then 'two_purchases'
+            when count(order_guid) >= 3 then 'three_plus_purchases'
+        end as order_count
 
     from "dbt"."dbt_kan_o"."stg_greenery__orders"
-    group by user_guid
+    group by 1
 
 )
 
-select 'who_made_one_purchase' as user_group, count(1) from users_with_order_count where order_count = 1
-union all
-select 'who_made_two_purchases'  as user_group, count(1) from users_with_order_count where order_count = 2
-union all
-select 'who_made_three+_purchases' as user_group, count(1) from users_with_order_count where order_count >= 3
+select
+    order_count,
+    count(1)
+
+from users_with_order_count
+group by 1
 ```
 
 We have:
