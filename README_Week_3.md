@@ -7,7 +7,7 @@ select
     sum(case when event_type = 'checkout' then 1 else 0 end) as checkout_sessions
     , count(distinct session_guid) as unique_sessions
     , sum(case when event_type = 'checkout' then 1 else 0 end)::float / count(distinct session_guid)::float as overall_conversion_rate
-  
+
 from "dbt"."dbt_kan_o"."stg_greenery__events"
 ```
 
@@ -70,3 +70,7 @@ select * from final
 See the results below:
 
 ![Conversion Rate by Product](./img/conversion-rate-by-product.png)
+
+Here is the lineage graph for this week:
+
+![Lineage Graph](./img/dbt-lineage-week-3.png)
