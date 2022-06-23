@@ -5,22 +5,29 @@ models:
   - name: fct_page_views
     description: Page views fact table
     columns:
-      - name: event_guid
-        description: UUID of each unique event on the platform
-        tests:
-          - not_null
-          - unique
       - name: session_guid
         description: UUID of each browsing session on the platform which can contain many events
+        tests:
+          - not_null
       - name: user_guid
         description: UUID of the user that this event is associated with
-      - name: page_url
-        description: URL that the event happened on
-      - name: created_at_utc
-        description: Timestamp of the event (in UTC)
-      - name: event_type
-        description: Type of event
-      - name: order_guid
-        description: If the event is specific to an order (mostly used for checkout)
-      - name: product_guid
-        description: If the event is specific to a product
+      - name: first_name
+        description: First name
+      - name: last_name
+        description: Last name
+      - name: email
+        description: User email
+      - name: packaged_shipped
+        description: Number of package shipped events
+      - name: page_view
+        description: Number of page view events
+      - name: checkout
+        description: Number of checkout events
+      - name: add_to_cart
+        description: Number of add to cart events
+      - name: first_session_event
+        description: Timestamp (in UTC) at which the first session occurs
+      - name: last_session_event
+        description: Timestamp (in UTC) at which the last session occurs
+      - name: hours_diff
+        description: Hours difference between the first and last sessions
