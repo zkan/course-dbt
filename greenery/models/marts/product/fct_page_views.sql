@@ -6,20 +6,40 @@
 
 with
 
-events as (
+session_length as (
 
     select
-        event_guid,
-        session_guid,
-        user_guid,
-        page_url,
-        created_at_utc,
-        event_type,
-        order_guid,
-        product_guid
+        session_guid
+        , min(event_at_utc) as first_event
+        , max(event_at_utc) as last_event
 
-    from {{ ref('stg_greenery__events') }}
+    from {{ ref('stg_greenery_events') }}
+    group by 1
+
+),
+
+final as (
+
+    select
+        agg.session_guid
+        , agg.user_guid
+        , u.first_name
+        , u.last_name
+        , u.email
+        , agg.package_shipped
+        , agg.page_view
+        , agg.checkout
+        , agg.add_to_cart
+        , session_length.first_event as first_session_event
+        , session_length.last_event as last_session_event
+        , date_part('hour', session_length.last_event::timestamp - session_length.first_event::timestamp) as hours_diff
+
+    from {{ ref('init_session_events_agg') }} agg
+    left join {{ ref('stg_greenery_users') }} u
+        on agg.user_guid = u.user_guid
+    left join session_length
+        on agg.session_guid = session_length.session_guid
 
 )
 
-select * from events
+select * from final
