@@ -10,10 +10,10 @@ session_length as (
 
     select
         session_guid
-        , min(event_at_utc) as first_event
-        , max(event_at_utc) as last_event
+        , min(created_at_utc) as first_event
+        , max(created_at_utc) as last_event
 
-    from {{ ref('stg_greenery_events') }}
+    from {{ ref('stg_greenery__events') }}
     group by 1
 
 ),
@@ -34,8 +34,8 @@ final as (
         , session_length.last_event as last_session_event
         , date_part('hour', session_length.last_event::timestamp - session_length.first_event::timestamp) as hours_diff
 
-    from {{ ref('init_session_events_agg') }} agg
-    left join {{ ref('stg_greenery_users') }} u
+    from {{ ref('int_session_events__agg') }} agg
+    left join {{ ref('stg_greenery__users') }} u
         on agg.user_guid = u.user_guid
     left join session_length
         on agg.session_guid = session_length.session_guid

@@ -1,3 +1,9 @@
+{{
+  config(
+    materialized = 'table'
+  )
+}}
+
 with
 
 page_view_count_by_product as (
@@ -7,8 +13,8 @@ page_view_count_by_product as (
         , p.name as product_name
         , sum(case when e.event_type = 'page_view' then 1 else 0 end) as page_view_count
 
-    from {{ ref('stg_greenery__events') as e
-    left join {{ ref('stg_greenery__products') as p
+    from {{ ref('stg_greenery__events') }} as e
+    left join {{ ref('stg_greenery__products') }} as p
         on e.product_guid = p.product_guid
     where
         e.product_guid is not null
