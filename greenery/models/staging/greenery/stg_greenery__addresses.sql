@@ -15,7 +15,7 @@ recasted as (
     select
         address_id as address_guid,
         address,
-        zipcode,
+        zipcode::text,
         state,
         country
 
