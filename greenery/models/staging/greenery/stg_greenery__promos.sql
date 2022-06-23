@@ -13,7 +13,7 @@ with source as (
 recasted as (
 
     select
-        replace(replace(lower(promo_id), '-', '_'), ' ', '_') as promo_guid,
+        {{ lower_and_underscore('promo_id') }} as promo_guid,
         discount as discount_usd,
         status as promo_status
 
