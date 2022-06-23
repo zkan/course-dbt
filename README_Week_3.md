@@ -3,14 +3,19 @@
 > What is our overall conversion rate? Conversion rate is defined as the # of unique sessions with a purchase event / total number of unique sessions.
 
 ```sql
-
+select
+    sum(case when event_type = 'checkout' then 1 else 0 end) as checkout_sessions
+    , count(distinct session_guid) as unique_sessions
+    , sum(case when event_type = 'checkout' then 1 else 0 end)::float / count(distinct session_guid)::float as overall_conversion_rate
+  
+from "dbt"."dbt_kan_o"."stg_greenery__events"
 ```
+
+Overall conversion rate is 0.6245674740484429.
 
 > What is our conversion rate by product? Conversion rate by product is defined as the # of unique sessions with a purchase event of that product / total number of unique sessions that viewed that product
 
 ```sql
-
-
 with
 
 page_view_count_by_product as (
