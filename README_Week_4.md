@@ -30,6 +30,8 @@ WHERE
 
 Here are the results from the `dbt snapshot`:
 
+The log shows that there are 2 rows got inserted.
+
 ![dbt Snapshot Results 01](./img/dbt-snapshot-results-01.png)
 
 ![dbt Snapshot Results 02](./img/dbt-snapshot-results-02.png)
