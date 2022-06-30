@@ -41,3 +41,7 @@ The log shows that there are 2 rows got inserted.
 > Product funnel
 
 ![Product Funnel](./img/product-funnel.png)
+
+> Exposure to represent that the product funnel is being used in a BI tool
+
+![Lineage Graph](./img/dbt-lineage-week-4.png)
