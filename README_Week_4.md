@@ -37,3 +37,7 @@ The log shows that there are 2 rows got inserted.
 ![dbt Snapshot Results 02](./img/dbt-snapshot-results-02.png)
 
 ![dbt Snapshot Results 03](./img/dbt-snapshot-results-03.png)
+
+> Product funnel
+
+![Product Funnel](./img/product-funnel.png)
