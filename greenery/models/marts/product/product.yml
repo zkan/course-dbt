@@ -31,3 +31,33 @@ models:
         description: Timestamp (in UTC) at which the last session occurs
       - name: hours_diff
         description: Hours difference between the first and last sessions
+
+  - name: fct_product_conversion
+    description: Product conversion fact table
+    columns:
+      - name: product_name
+        description: Product name
+      - name: checkout_count
+        description: Number of checkout events
+      - name: page_view_count
+        description: Number of page view events
+      - name: conversion_rate
+        description: Conversion rate of each product
+
+  - name: product_funnel
+    description: Product funnel
+    columns:
+      - name: nb_events
+        description: Number of events including page_view, add_to_cart, and checkout
+      - name: nb_page_view_events
+        description: Number of page view events
+      - name: nb_add_to_cart_events
+        description: Number of add to cart events
+      - name: nb_checkout_events
+        description: Number of checkout events
+      - name: page_view_rate
+        description: Page view rate
+      - name: add_to_cart_rate
+        description: Add to cart rate
+      - name: checkout_rate
+        description: Checkout rate
