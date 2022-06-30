@@ -1,0 +1,17 @@
+version: 2
+
+exposures:
+  
+  - name: product_funnel
+    type: dashboard
+    maturity: high
+    url: https://bi.tool/dashboards/1
+    description: >
+      Product funnel
+    
+    depends_on:
+      - ref('product_funnel')
+      
+    owner:
+      name: Kan Ouivirach
+      email: zkan.cs@gmail.com
