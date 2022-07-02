@@ -59,7 +59,7 @@ The largest drop off point is between add to cart and checkout.
 > value of dbt/analytics engineering to a decision maker at your organization?
 
 Instead of having ad-hoc 1k+ queries and no one knows what they are, we can
-gain values from the dbt to have a much better way of work with reuseable code
+gain values from the dbt to have a much better way of work with reusable code
 that allows us to scale our data analytics.
 
 Having an analytics engineering in the organization encourages software
