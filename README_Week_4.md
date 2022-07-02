@@ -54,3 +54,51 @@ The largest drop off point is between add to cart and checkout.
 > Exposure to represent that the product funnel is being used in a BI tool
 
 ![Lineage Graph](./img/dbt-lineage-week-4.png)
+
+> If your organization is thinking about using dbt, how would you pitch the
+> value of dbt/analytics engineering to a decision maker at your organization?
+
+Instead of having ad-hoc 1k+ queries and no one knows what they are, we can
+gain values from the dbt to have a much better way of work with reuseable code
+that allows us to scale our data analytics.
+
+Having an analytics engineering in the organization encourages software
+engineering practices in data. With less effort, we can dig in the data and get
+more insights and business values.
+
+> If your organization is using dbt, what are 1-2 things you might do
+> differently / recommend to your organization based on learning from this
+> course?
+
+I'll recommend the organization to
+
+* structure the dbt project with good practices, so we can follow the same
+  practices and have a better collaboration between the teams;
+* focus on the intermediate models and how we can reuse the models;
+* try automating things by using an orchestration tool to schedule all of the
+  tasks;
+* monitor the dbt project performance by looking at the dbt metadata.
+
+> If you are thinking about moving to analytics engineering, what skills have
+> you picked that give you the most confidence in pursuing this next step?
+
+I think the skills would be business domain analysis, writing SQL, and software
+engineering.
+
+> How would you go about setting up a production/scheduled dbt run of your
+> project in an ideal state?
+
+Here are the steps I think I would do:
+
+1. Visualize my workflow and all of my manual steps to see and design how I can
+automate.
+1. I think I would choose Dagster as an orchestration tool since it seems
+having a better integration with dbt than other orchestration tools.
+1. I will schedule the following dbt commands:
+    * `dbt source freshness`
+    * `dbt build`
+    * `dbt docs generate`
+1. For the metadata, I'm interested in
+[run_results.json](https://docs.getdbt.com/reference/artifacts/run-results-json)
+since it allows me to understand how my models, tests, etc. are performing over
+time.
