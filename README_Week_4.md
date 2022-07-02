@@ -42,6 +42,15 @@ The log shows that there are 2 rows got inserted.
 
 ![Product Funnel](./img/product-funnel.png)
 
+> How are our users moving through the product funnel?
+
+There are 1871 users viewing a page, 986 users getting to the add-to-cart page,
+and 361 getting to the check out page.
+
+> Which steps in the funnel have largest drop off points?
+
+The largest drop off point is between add to cart and checkout.
+
 > Exposure to represent that the product funnel is being used in a BI tool
 
 ![Lineage Graph](./img/dbt-lineage-week-4.png)
